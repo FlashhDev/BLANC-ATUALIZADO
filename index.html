@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Studio Royale — Fotografia & Vídeo Profissional</title>
+  <meta name="description" content="Studio Royale — serviços profissionais de fotografia e produção de vídeo. Portfólio, catálogo, vendas e contato." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+/* ===== RODAPÉ COM EFEITO BLUR ===== */
+.site-footer {
+  position: relative;
+  background: rgba(15, 15, 15, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 30px 20px;
+  text-align: center;
+  color: #ccc;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.95rem;
+}
+
+.site-footer .footer-content {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.site-footer p {
+  margin-bottom: 20px;
+  line-height: 1.5;
+  color: #aaa;
+}
+
+.footer-link {
+  color: #3b82f6;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-link:hover {
+  color: #60a5fa;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.footer-logo {
+  width: 70px;
+  height: auto;
+  filter: brightness(0.9);
+}
+
+.social-icons a {
+  color: #aaa;
+  margin: 0 6px;
+  font-size: 1.3rem;
+  transition: color 0.3s, transform 0.3s;
+}
+.social-icons a:hover {
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.footer-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-links a {
+  color: #888;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+.footer-links a:hover {
+  color: #fff;
+}
+
+/* ===== VARIABLES & RESET ===== */
+:root {
+  --bg:#040405;
+  --surface:#0f1113;
+  --muted:#9aa0a6;
+  --accent:#ffd166;
+  --glass: rgba(255,255,255,0.03);
+  --card-shadow: 0 8px 28px rgba(0,0,0,0.6);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+* { box-sizing:border-box }
+html,body {
+  height:100%;
+  margin:0;
+  background:linear-gradient(180deg,var(--bg),#07070a);
+  color:#fff;
+  -webkit-font-smoothing:antialiased;
+  scroll-behavior:smooth;
+}
+a { color:inherit; text-decoration:none }
+img { display:block; max-width:100%; height:auto }
+button { font-family:inherit; cursor:pointer }
+
+/* ===== LAYOUT ===== */
+.wrap { max-width:1200px; margin:0 auto; padding:36px 24px }
+header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  flex-wrap:wrap;
+}
+.brand { display:flex; align-items:center; gap:12px; flex-wrap:wrap }
+.logo {
+  width:56px; height:56px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#111,#1b1b1b);
+  display:flex; align-items:center; justify-content:center;
+  font-weight:800; color:var(--accent);
+  box-shadow:var(--card-shadow);
+  border:1px solid rgba(255,255,255,0.03);
+}
+nav { display:flex; gap:12px; align-items:center; flex-wrap:wrap; justify-content:center }
+.nav-link {
+  padding:8px 12px;
+  border-radius:10px;
+  background:var(--glass);
+  border:1px solid rgba(255,255,255,0.03);
+  font-size:14px;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.nav-link:hover { transform:translateY(-3px); box-shadow:0 8px 18px rgba(0,0,0,0.6) }
+.btn-accent {
+  background:var(--accent);
+  color:#000;
+  padding:10px 14px;
+  border-radius:10px;
+  border:none;
+  font-weight:700;
+}
+
+/* ===== HERO ===== */
+.hero {
+  display:grid;
+  grid-template-columns:1fr 380px;
+  gap:28px;
+  align-items:center;
+  margin-top:28px;
+}
+.hero h1 { font-size:44px; margin:0; line-height:1.02; letter-spacing:-0.02em }
+.hero p { color:var(--muted); margin-top:10px; max-width:60ch }
+.hero-cta { margin-top:18px; display:flex; gap:12px; flex-wrap:wrap }
+
+/* ===== SECTIONS & GRID ===== */
+section { margin-top:56px; opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .8s cubic-bezier(.2,.9,.25,1) }
+section.is-visible { opacity:1; transform:none }
+h2 { font-size:28px; margin:0 0 12px 0 }
+p.lead { color:var(--muted); margin:0 0 18px 0 }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px }
+.card {
+  background:linear-gradient(180deg,var(--surface),#0b0d0f);
+  border-radius:12px;
+  padding:16px;
+  border:1px solid rgba(255,255,255,0.03);
+  box-shadow:var(--card-shadow);
+  transition:transform .45s cubic-bezier(.2,.9,.25,1), box-shadow .45s;
+}
+.card:hover { transform:translateY(-8px); box-shadow:0 18px 40px rgba(0,0,0,0.7) }
+.card img { border-radius:8px; height:200px; object-fit:cover; margin-bottom:12px }
+.card h3 { margin:0 0 8px 0 }
+.muted { color:var(--muted); font-size:14px }
+
+/* ===== CATALOG ===== */
+.catalog-item { display:flex; gap:14px; align-items:center; flex-wrap:wrap }
+.catalog-slideshow {
+  position:relative;
+  width:140px;
+  height:96px;
+  border-radius:10px;
+  overflow:hidden;
+  flex-shrink:0;
+  box-shadow:0 8px 22px rgba(0,0,0,0.6);
+}
+.catalog-slideshow img {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transition:opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+.catalog-slideshow img.active { opacity:1; transform:scale(1) }
+.catalog-slideshow img.enter-zoom { transform:scale(1.04) }
+
+/* ===== BUTTONS ===== */
+.btn-large {
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 20px;
+  border-radius:12px;
+  font-weight:700;
+  border:none;
+  box-shadow:0 8px 28px rgba(0,0,0,0.5);
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.btn-large:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(0,0,0,0.6) }
+.btn-wa { background:#25D366; color:#000 }
+.btn-ig { background:linear-gradient(45deg,#feda75,#d62976,#8134af,#515bd4); color:#fff }
+
+/* ===== STICKY SOCIAL ===== */
+.sticky-social {
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  z-index:80;
+}
+.ss-btn {
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(180deg,#0f0f10,#131313);
+  border:1px solid rgba(255,255,255,0.04);
+  cursor:pointer;
+  box-shadow:0 8px 24px rgba(0,0,0,0.6);
+  transition:transform .18s;
+}
+.ss-btn:hover { transform:translateY(-6px) }
+.ss-ig { background:linear-gradient(45deg,#feda75,#d62976,#8134af,#515bd4); color:#fff }
+.ss-wa { background:#25D366; color:#000 }
+
+/* ===== LIGHTBOX ===== */
+.overlay {
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.75);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:120;
+}
+.overlay.open { display:flex }
+.lightbox {
+  max-width:1200px;
+  width:95%;
+  border-radius:12px;
+  padding:12px;
+}
+.lightbox img {
+  width:100%;
+  height:auto;
+  border-radius:8px;
+  box-shadow:0 18px 50px rgba(0,0,0,0.7);
+}
+
+/* ===== RESPONSIVO ===== */
+@media(max-width:980px) {
+  .hero { grid-template-columns:1fr; text-align:center }
+  .hero aside { max-width:400px; margin:0 auto }
+  nav { justify-content:center }
+  .catalog-item { flex-direction:column; align-items:flex-start }
+}
+@media(max-width:640px) {
+  header { flex-direction:column; align-items:flex-start; gap:12px }
+  .logo { width:48px; height:48px }
+  .hero h1 { font-size:28px }
+  .sticky-social { right:12px; bottom:12px }
+  .catalog-slideshow { width:100%; height:auto }
+  .card img { height:160px }
+  .grid { grid-template-columns:1fr }
+  .hero-cta { justify-content:center }
+  section { padding-bottom:20px }
+}
+</style>
+
+   
+ 
+</head>
+
+<!-- ===== MODAL POPUP ===== -->
+<div id="promoModal" class="modal">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeModal()">×</button>
+    
+    <h2>🎁 <span class="highlight">SEJA BEM-VINDO A BLANC STUDIO</span> 🎁</h2>
+    <p>Confira nosso site para obter mais informações!</p>
+
+    <div class="modal-image">
+      <img src="imagens/blancstudio.jpeg" alt="Caixa exclusiva">
+    </div>
+
+    <div class="modal-section">
+      <h3>✨ Oferta exclusiva</h3>
+      <ul>
+        <li>Para celebrar esse novo começo, oferecemos 25% de desconto especial na sua primeira compra.
+        <p>Aproveite e viva essa nova experiência conosco!</p>   
+        </li>
+
+      </ul>
+    </div>
+
+    <p class="modal-footer-text">Não perca a chance de obter essa oferta!</p>
+
+    <div class="modal-buttons">
+      <button class="btn-close" onclick="closeModal()">Fechar</button>
+      <button class="btn-buy" onclick="window.open('https://wa.me/5511912345678?text=Olá!%20Quero%20saber%20mais%20sobre%20a%20Caixa%20Exclusiva!', '_blank')">🚀 Obter Oferta!</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ESTILO CSS ===== -->
+<style>
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(10, 10, 20, 0.8);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.5s ease;
+  z-index: 9999;
+}
+
+.modal.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: radial-gradient(circle at top, #0a0f1a, #050709);
+  border: 1px solid rgb(255, 255, 255);
+  box-shadow: 0 0 25px rgb(255, 255, 255);
+  border-radius: 14px;
+  padding: 30px;
+  width: 90%;
+  max-width: 480px;
+  color: #e0f7ff;
+  text-align: center;
+  position: relative;
+  animation: popIn 0.5s ease;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px; right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 26px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.close-btn:hover { transform: scale(1.2); color: #fff; }
+
+.modal-content h2 {
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+.highlight {
+  color: #fcfbfa;
+  text-shadow: 0 0 8px #ffffff;
+}
+
+.modal-content p {
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.modal-image img {
+  width: 220px;
+  border-radius: 10px;
+  border: 1px solid rgb(255, 255, 255);
+  margin: 12px auto;
+  box-shadow: 0 0 25px rgb(255, 255, 255);
+}
+
+.modal-section {
+  background: rgba(0,0,0,0.3);
+  border-radius: 10px;
+  padding: 10px 15px;
+  margin-top: 15px;
+  text-align: left;
+}
+.modal-section h3 {
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+.modal-section ul {
+  padding-left: 20px;
+  color: #ffffff;
+}
+.modal-section li {
+  margin: 6px 0;
+}
+
+.modal-footer-text {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.btn-close, .btn-buy {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 0.95rem;
+}
+
+.btn-close {
+  background: rgba(255,255,255,0.08);
+  color: #bcd;
+}
+.btn-close:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.btn-buy {
+  background: linear-gradient(90deg, #ffffff, #ffffff);
+  color: #000000;
+  box-shadow: 0 0 10px rgb(255, 255, 255);
+}
+.btn-buy:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgb(255, 255, 255);
+}
+</style>
+
+<!-- ===== SCRIPT PARA MOSTRAR AO ENTRAR ===== -->
+<script>
+  window.addEventListener("load", () => {
+    const modal = document.getElementById("promoModal");
+    setTimeout(() => modal.classList.add("show"), 1000); // aparece após 1s
+  });
+
+  function closeModal() {
+    const modal = document.getElementById("promoModal");
+    modal.classList.remove("show");
+  }
+</script>
+
+
+<body>
+  <div class="wrap">
+    <!-- Header -->
+    <header>
+  <div class="brand">
+    <div class="logo">
+      <!-- Substitua o caminho abaixo pela sua imagem -->
+      <img src="imagens/blancstudio - Copia.jpeg" alt="Studio Royale" style="height:48px; width:auto;">
+    </div>
+    <div>
+      <div style="font-weight:800; font-size:16px;">BLANC STUDIO</div>
+      <div class="muted" style="font-size:13px;">Fotografia • Vídeo • Catálogo</div>
+    </div>
+      </div>
+
+      <nav aria-label="Navegação principal">
+        <a class="nav-link" href="#sobre">Sobre</a>
+        <a class="nav-link" href="#portfolio">Portfólio</a>
+        <a class="nav-link" href="#catalogo">Catálogo</a>
+        <a class="nav-link" href="#servicos">Serviços</a>
+        <a class="btn-accent" href="#contato">Contato</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Apresentação" id="top">
+      <div>
+        <h1>Fotografia & Vídeo profissional</h1>
+        </h2>Contamos sua historia com imagens e videos para sempre!</h2>
+        <p></p>
+        <p class="lead">  <strong>Blanc Studio é especializado em fotografia e vídeo profissional, unindo técnica, sensibilidade e arte para criar imagens autênticas e memoráveis. 
+  <br><br>
+ Realizamos diversos ensaios fotograficos, casamentos, campanhas publicitárias, para empresas, marcas e com produções audiovisuais com excelência em cada detalhe — da criação à pós-produção.
+ <br><br>
+ Nosso compromisso é transformar histórias em imagens que emocionam e inspiram, valorizando pessoas, marcas e momentos únicos.</strong>
+</p>
+        <div class="hero-cta" style="margin-top:18px">
+          <a class="btn-accent" href="#portfolio">Ver Portfólio</a>
+          <a class="nav-link" href="#catalogo">Ver Catálogo</a>
+          <a class="nav-link" href="#contato">Solicitar orçamento</a>
+        </div>
+      </div>
+
+      <aside style="background:linear-gradient(180deg,#070707,#0c0c0c);border-radius:12px;padding:18px;border:1px solid rgba(255,255,255,0.03);box-shadow:var(--card-shadow)">
+        <div style="font-weight:800;font-size:18px">Parceiros</div>
+        <p class="muted" style="margin-top:8px">Quer se tornar um de nossos parceiros? entre em contato!</p>
+        <img src="imagens/Guxta Oliver (1).png" alt="Destaque" style="border-radius:8px;margin-top:12px;height:180px;object-fit:cover">
+        <div style="display:flex;gap:10px;margin-top:12px">
+          <a class="btn-accent" href="#contato">Entrar em Contato</a>
+          <a class="nav-link" href="#portfolio">Ver trabalhos</a>
+        </div>
+      </aside>
+    </section>
+
+    
+    <!-- Sobre -->
+    <section id="sobre" aria-labelledby="sobreTitle">
+      <h2 id="sobreTitle"></h2>
+      <p class="lead"></p>
+      <div class="grid">
+        <div class="card">
+          <h3>Nossa Missão</h3>
+          <p class="muted">Dar vida a histórias que conectam marcas e pessoas — através de imagens que emocionam, inspiram e geram resultados reais.</p>
+        </div>
+        <div class="card">
+          <h3>Equipe</h3>
+          <p class="muted">Um time de especialistas em fotografia, direção, edição e produção, prontos para transformar cada projeto em uma experiência visual memorável.</p>
+        </div>
+        <div class="card">
+          <h3>Atuação</h3>
+          <p class="muted">Do Brasil para o mundo: atendemos clientes em todo o território nacional e realizamos produções internacionais com a mesma qualidade, impacto e criatividade.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" aria-labelledby="servicosTitle">
+      <h2 id="servicosTitle">Serviços</h2>
+      <p class="lead">Atuamos em todas as etapas de produção visual — do planejamento até a entrega final.</p>
+      <div class="grid">
+        <div class="card">
+          <img src="imagens/_MG_0006.jpg" alt="Ensaios">
+          <h3>Ensaios Fotográficos</h3>
+          <p class="muted">Retratos, editoriais, moda e eventos. Direção de arte e pós-produção inclusas.</p>
+        </div>
+
+        <div class="card">
+          <img src="imagens/_MG_6633.jpg" alt="Vídeo">
+          <h3>Produção de Vídeo</h3>
+          <p class="muted">Vídeos institucionais, comerciais, clipes e conteúdo para redes sociais com equipe profissional.</p>
+        </div>
+
+        <div class="card">
+          <img src="imagens/_MG_7172-Aprimorado-NR.jpg" alt="Pós">
+          <h3>Edição e Pós-produção</h3>
+          <p class="muted">Color grading, montagem, correção fina e masterização de arquivos para entrega em todos os formatos.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfólio -->
+    <section id="portfolio" aria-labelledby="portfolioTitle">
+      <h2 id="portfolioTitle">Portfólio</h2>
+      <p class="lead">Seleção de trabalhos recentes — clique para ampliar.</p>
+      <div class="grid" id="portfolioGrid">
+        <div class="card" role="article" data-img="imagens/ChatGPT Image 28 de out. de 2025, 16_20_43.png">
+          <img src="imagens/ChatGPT Image 28 de out. de 2025, 16_20_43.png" alt="Editorial">
+          <h3>Editorial — Moda</h3>
+          <p class="muted">Direção criativa e fotografia de moda para marca X.</p>
+        </div>
+
+        <div class="card" role="article" data-img="imagens/WhatsApp Image 2025-10-28 at 11.31.41.jpeg">
+          <img src="imagens/WhatsApp Image 2025-10-28 at 11.31.41.jpeg" alt="Casamento">
+          <h3>Casamento — Lifestyle</h3>
+          <p class="muted">Cobertura documental com edição cinematográfica.</p>
+        </div>
+
+        <div class="card" role="article" data-img="imagens/WhatsApp Image 2025-10-28 at 16.27.38.jpeg">
+          <img src="imagens/WhatsApp Image 2025-10-28 at 16.27.38.jpeg" alt="Campanha">
+          <h3>Festa de Aniversario</h3>
+          <p class="muted">Produção completa: pré, produção e pós.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Catálogo -->
+    <section id="catalogo" aria-labelledby="catalogoTitle">
+      <h2 id="catalogoTitle">Catálogo</h2>
+      <p class="lead">Preços de pacotes e Serviços</p>
+
+      <div class="grid">
+        <div class="card catalog-item">
+          <div class="catalog-slideshow" data-images='[
+            "imagens/blancstudio.jpeg",
+            "imagens/blancstudio.jpeg",
+            "imagens/blancstudio.jpeg"
+          ]'></div>
+          <div>
+            <h3>Trabalhos por hora</h3>
+            <p class="muted">trabalho hora de evento somente por fotografia, entrar em contato para videomaker</p>
+            <div style="margin-top:10px;font-weight:800;color:var(--accent)">R$ 100,00</div>
+          </div>
+        </div>
+
+        <div class="card catalog-item">
+          <div class="catalog-slideshow" data-images='[
+            "imagens/blancstudio.jpeg",
+            "imagens/blancstudio.jpeg",
+            "imagens/blancstudio.jpeg"
+          ]'></div>
+          <div>
+            <h3>Ensaios fotograficos</h3>
+            <p class="muted">Preços a partir de R$ 300,00 entrar em contato e fazer orçamentos!</p>
+            <div style="margin-top:10px;font-weight:800;color:var(--accent)">R$ 300,00</div>
+          </div>
+        </div>
+
+        <div class="card catalog-item">
+          <div class="catalog-slideshow" data-images='[
+            "imagens/blancstudio.jpeg",
+            "imagens/blancstudio.jpeg",
+            "imagens/blancstudio.jpeg"
+          ]'></div>
+          <div>
+            <h3>Arquivo Digital HD</h3>
+            <p class="muted">Entrega por link privado — fotos tratadas em alta resolução.</p>
+            <div style="margin-top:10px;font-weight:800;color:var(--accent)"> Valor mediante ao orçamento / pacote</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contato (simples, direciona para WhatsApp e Instagram) -->
+    <section id="contato" aria-labelledby="contatoTitle">
+      <h2 id="contatoTitle">Contato</h2>
+      <p class="lead">Entre em contato conosco diretamente ou veja nosso portfólio no Instagram.</p>
+
+      <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:18px;margin-top:20px">
+        <a class="btn-large btn-wa" href="https://wa.me/5531990840199?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+          <!-- ícone WhatsApp -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="margin-left:2px"><path d="M21 12.07a9 9 0 10-3.1 6.36L21 21l-1.57-4.57A8.96 8.96 0 0021 12.07z" stroke="#000" stroke-width="0.8"/><path d="M16.5 12.7c-.2-.1-1.1-.6-1.3-.6s-.3 0-.4.1c-.1 0-.6.3-.7.4s-.3.2-.6.1c-.2-.1-1-.4-1.9-1.2-.7-.6-1.1-1.4-1.2-1.6-.1-.3 0-.5.1-.7.1-.2.1-.4 0-.6-.1-.2-.4-.5-.6-.8-.2-.3-.5-.2-.7-.1-.2.2-.6.6-.9 1.3-.3.7-.4 1.3-.4 1.6s.2.6.6.9c.4.3 1 .6 1.6 1.1.6.5 1.5 1.1 2.5 1.4 1 .4 1 .4 1.6.2.6-.2 1.1-.6 1.3-.8.2-.2.2-.4.1-.6-.1-.2-.3-.4-.5-.5z" fill="#000"/></svg>
+          Fale conosco no WhatsApp
+        </a>
+
+        <a class="btn-large btn-ig" href="https://instagram.com/blancstudioorg" target="_blank" rel="noopener" aria-label="Ver Instagram">
+          <!-- ícone Insta -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="margin-left:2px"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 6.5h.01" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Ver nosso Instagram
+        </a>
+      </div>
+
+      <p class="muted" style="text-align:center;margin-top:14px">Atendimento todos os dias, das 7h às 23h — responderemos o mais rápido possível.</p>
+    </section>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <p>
+      A marca <strong>BLANC STUDIO</strong>, incluindo todo o conteúdo e elementos relacionados ao site, 
+      é de propriedade exclusiva da <a href="#" class="footer-link">BLANC STUDIO</a>.
+    </p>
+
+    <div class="footer-bottom">
+      <img src="imagens/blancstudio.jpeg" alt="Logo" class="footer-logo">
+      <span>© 2023 - 2025</span>
+      <div class="social-icons">
+        <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/seunumerowhatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+      <div class="footer-links">
+        <a href="#">Código de Conduta</a> |
+        <a href="#">Termos de Serviço</a> |
+        <a href="#">Sobre nós</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Ícones FontAwesome -->
+<script src="https://kit.fontawesome.com/a2e0e6bda6.js" crossorigin="anonymous"></script>
+  </div>
+
+  <!-- sticky social (quick access) -->
+  <div class="sticky-social" aria-hidden="false">
+    <a class="ss-btn ss-ig" id="btnIG" href="https://instagram.com/blancstudioorg" target="_blank" rel="noopener" title="Instagram">
+      <!-- IG icon -->
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" stroke="white" stroke-width="1.2"/><path d="M17.5 6.5h.01" stroke="white" stroke-width="1.6"/></svg>
+    </a>
+
+    <a class="ss-btn ss-wa" id="btnWA" href="https://wa.me/5531990840199?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento" target="_blank" rel="noopener" title="WhatsApp">
+      <!-- WA icon -->
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 12.07a9 9 0 10-3.1 6.36L21 21l-1.57-4.57A8.96 8.96 0 0021 12.07z" stroke="#000" stroke-width="0.6"/><path d="M16.5 12.7c-.2-.1-1.1-.6-1.3-.6s-.3 0-.4.1c-.1 0-.6.3-.7.4s-.3.2-.6.1c-.2-.1-1-.4-1.9-1.2-.7-.6-1.1-1.4-1.2-1.6-.1-.3 0-.5.1-.7.1-.2.1-.4 0-.6-.1-.2-.4-.5-.6-.8-.2-.3-.5-.2-.7-.1-.2.2-.6.6-.9 1.3-.3.7-.4 1.3-.4 1.6s.2.6.6.9c.4.3 1 .6 1.6 1.1.6.5 1.5 1.1 2.5 1.4 1 .4 1 .4 1.6.2.6-.2 1.1-.6 1.3-.8.2-.2.2-.4.1-.6-.1-.2-.3-.4-.5-.5z" fill="#000"/></svg>
+    </a>
+  </div>
+
+  <!-- lightbox overlay -->
+  <div id="overlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="lightbox" id="lightbox"><img src="" alt="Ampliação"></div>
+  </div>
+
+  <script>
+    // ===== Smooth anchor scrolling handled by CSS scroll-behavior; ensure small offset for fixed header if needed =====
+
+    // ===== IntersectionObserver for section reveal (fade + slide-up) =====
+    (function(){
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(prefersReduced) {
+        // Immediately show sections
+        document.querySelectorAll('section').forEach(s => s.classList.add('is-visible'));
+        return;
+      }
+      const obs = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            e.target.classList.add('is-visible');
+            obs.unobserve(e.target);
+          }
+        });
+      }, {threshold: 0.12});
+      document.querySelectorAll('section').forEach(s => obs.observe(s));
+    })();
+
+    // ===== Portfolio lightbox =====
+    (function(){
+      const overlay = document.getElementById('overlay');
+      const lightboxImg = document.querySelector('#lightbox img');
+      document.querySelectorAll('#portfolioGrid .card').forEach(card=>{
+        card.style.cursor = 'zoom-in';
+        card.addEventListener('click', ()=>{
+          const src = card.getAttribute('data-img') || card.querySelector('img')?.src;
+          if(!src) return;
+          lightboxImg.src = src;
+          overlay.classList.add('open');
+          overlay.setAttribute('aria-hidden','false');
+        });
+      });
+      overlay.addEventListener('click', (e)=>{
+        if(e.target === overlay || e.target === lightboxImg){
+          overlay.classList.remove('open');
+          overlay.setAttribute('aria-hidden','true');
+          lightboxImg.src = '';
+        }
+      });
+      document.addEventListener('keydown', (e)=> {
+        if(e.key === 'Escape' && overlay.classList.contains('open')){
+          overlay.classList.remove('open');
+          overlay.setAttribute('aria-hidden','true');
+          lightboxImg.src = '';
+        }
+      });
+    })();
+
+    // ===== Catalog slideshow per item (fade + slight zoom on enter) =====
+    (function(){
+      document.querySelectorAll('.catalog-slideshow').forEach(slide => {
+        const imgs = JSON.parse(slide.getAttribute('data-images') || '[]');
+        if(!imgs.length) return;
+        imgs.forEach((src, i) => {
+          const img = document.createElement('img');
+          img.src = src;
+          if(i === 0) img.classList.add('active');
+          // slight zoom on new image for subtle motion
+          img.addEventListener('transitionstart', ()=> {
+            img.classList.add('enter-zoom');
+            setTimeout(()=> img.classList.remove('enter-zoom'), 900);
+          });
+          slide.appendChild(img);
+        });
+        let index = 0;
+        const swap = () => {
+          const list = slide.querySelectorAll('img');
+          list[index].classList.remove('active');
+          index = (index + 1) % list.length;
+          list[index].classList.add('active');
+        };
+        // staggered start to reduce synchronous changes across items
+        const startDelay = Math.floor(Math.random()*1500);
+        setTimeout(()=> {
+          swap(); // initial shift so the first change isn't simultaneous with others
+          setInterval(swap, 3000 + Math.floor(Math.random()*800)); // small randomness
+        }, startDelay);
+      });
+    })();
+
+    // ===== Simple console hints for placeholders =====
+    (function(){
+      const ig = document.getElementById('btnIG').href;
+      const wa = document.getElementById('btnWA').href;
+      if(ig.includes('seu_usuario')) console.info('Troque o href do botão Instagram pelo seu usuário (ex: https://instagram.com/seu_usuario).');
+      if(wa.includes('5511999999999')) console.info('Troque o número do WhatsApp no link (formato internacional sem sinais).');
+    })();
+
+    // ===== Set current year =====
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
